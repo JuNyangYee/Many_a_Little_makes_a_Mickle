@@ -4,7 +4,13 @@
 
 let cn;
 
-let ps;
+// A reference to our box2d world
+let world;
+
+// A list we'll use to track fixed objects
+let boundaries = [];
+// A list for all of our rectangles
+let boxes = [];
 
 function centerCanvas() {
   var x = (windowWidth - width) / 2;
@@ -16,20 +22,51 @@ function windowResized() {
 }
 
 function setup() {
-  cn = createCanvas(640, 360);
+  cn = createCanvas(900, 500);
   centerCanvas();
   cn.parent('p5');
-  setFrameRate(60);
-  ps = new ParticleSystem(createVector(width / 2, 50));
+
+  // Initialize box2d physics and create the world
+  world = createWorld();
+
+  // Add a bunch of fixed boundaries
+  // boundaries.push(new Boundary(width / 4, height - 5, width / 2 - 50, 10));
+  // boundaries.push(new Boundary(3 * width / 4, height - 50, width / 2 - 50, 10));
+  boundaries.push(new Boundary(0, height, width * 2, 10));
+
+  let b = new Box(width / 2, 30);
+  boxes.push(b);
 }
 
 function draw() {
   background(51);
 
-  // Apply gravity force to all Particles
-  let gravity = createVector(0, 0.1);
-  ps.applyForce(gravity);
+  // We must always step through time!
+  let timeStep = 1.0 / 30;
+  // 2nd and 3rd arguments are velocity and position iterations
+  world.Step(timeStep, 10, 10);
 
-  ps.addParticle();
-  ps.run();
+  // Boxes fall from the top every so often
+  if (random(1) < 0.2) {
+    let b = new Box(width / 2, 30);
+    boxes.push(b);
+  }
+
+  // Display all the boundaries
+  for (let i = 0; i < boundaries.length; i++) {
+    boundaries[i].display();
+  }
+
+  // Display all the boxes
+  for (let i = boxes.length - 1; i >= 0; i--) {
+    boxes[i].display();
+    if (boxes[i].done()) {
+      boxes.splice(i, 1);
+    }
+  }
+}
+
+function keyPressed() {
+  boxes[0].mouseDone();
+  boxes.shift();
 }
