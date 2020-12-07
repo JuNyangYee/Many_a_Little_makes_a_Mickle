@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo&display=swap&subset=korean');
+@import url('http://fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  /*font-family: "Nanum Gothic", sans-serif;*/
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html {
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: auto;
+  background-color: #f0f0f0;
+  color: #151515;
+  font-size: 15px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: #2077b2;
+  text-decoration: none;
+}
+
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: 500;
+}
+
+#p5 {
+  margin: 0, auto;
+  height: 500px;
+}
+
+#title {
+  text-align: center;
+  margin: 30px;
+}
+
+#container {
+  height: 30px;
+}
+
+#bottom {
+  text-align: center;
+  margin: 24px;
+  font-size: 84%;
+  font-weight: 100;
+}
+
+#bottom span {
+  text-align: center;
+}
+
+#title span {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+canvas {
+  display: block;
+}
