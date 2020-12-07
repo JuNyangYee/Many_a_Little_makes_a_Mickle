@@ -12,6 +12,9 @@ let boundaries = [];
 // A list for all of our rectangles
 let boxes = [];
 
+
+let bgColor;
+
 function centerCanvas() {
   var x = (windowWidth - width) / 2;
   cn.position(x);
@@ -26,6 +29,8 @@ function setup() {
   centerCanvas();
   cn.parent('p5');
 
+  colorMode(HSB);
+
   // Initialize box2d physics and create the world
   world = createWorld();
 
@@ -33,13 +38,18 @@ function setup() {
   // boundaries.push(new Boundary(width / 4, height - 5, width / 2 - 50, 10));
   // boundaries.push(new Boundary(3 * width / 4, height - 50, width / 2 - 50, 10));
   boundaries.push(new Boundary(0, height, width * 2, 10));
+  boundaries.push(new Boundary(0, 0, 10, height * 2));
+  boundaries.push(new Boundary(width, 0, 10, height * 2));
 
-  let b = new Box(width / 2, 30);
+  let b = new Box(width / 2, -50);
   boxes.push(b);
+
+
+  bgColor = color(0);
 }
 
 function draw() {
-  background(51);
+  background(bgColor);
 
   // We must always step through time!
   let timeStep = 1.0 / 30;
@@ -48,7 +58,7 @@ function draw() {
 
   // Boxes fall from the top every so often
   if (random(1) < 0.2) {
-    let b = new Box(width / 2, 30);
+    let b = new Box(width / 2, -50);
     boxes.push(b);
   }
 
@@ -63,6 +73,14 @@ function draw() {
     if (boxes[i].done()) {
       boxes.splice(i, 1);
     }
+  }
+
+  if (boxes.length > 200) {
+    bgColor = color(0, 40, 60);
+  } else if (boxes.length > 80) {
+    bgColor = color(40, 40, 60);
+  } else if (boxes.length > 0) {
+    bgColor = color(80, 40, 60);
   }
 }
 

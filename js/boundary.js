@@ -12,6 +12,8 @@ class Boundary {
     this.w = w;
     this.h = h;
 
+    this.boundaryColor = color(0);
+
     let fd = new box2d.b2FixtureDef();
     fd.density = 1.0;
     fd.friction = 0.5;
@@ -29,8 +31,8 @@ class Boundary {
 
   // Draw the boundary, if it were at an angle we'd have to do something fancier
   display() {
-    fill(127);
-    stroke(0);
+    fill(this.boundaryColor);
+    stroke(this.boundaryColor);
     rectMode(CENTER);
     rect(this.x, this.y, this.w, this.h);
   }
