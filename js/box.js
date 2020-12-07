@@ -11,8 +11,6 @@ class Box {
     this.w = random(18, 20);
     this.h = random(18, 20);
 
-    this.scribble = new Scribble();
-
     // Define a body
     let bd = new box2d.b2BodyDef();
     bd.type = box2d.b2BodyType.b2_dynamicBody;
