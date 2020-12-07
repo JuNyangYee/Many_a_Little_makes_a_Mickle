@@ -51,9 +51,18 @@ section {
   height: 30px;
 }
 
+#middle {
+  text-align: center;
+  margin: 24px;
+  margin-bottom: 0;
+  font-size: 100%;
+  font-weight: 300;
+}
+
 #bottom {
   text-align: center;
   margin: 24px;
+  margin-bottom: 0;
   font-size: 84%;
   font-weight: 100;
 }
@@ -64,7 +73,7 @@ section {
 
 #title span {
   font-size: 26px;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 canvas {
