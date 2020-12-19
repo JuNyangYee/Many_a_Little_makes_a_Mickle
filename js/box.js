@@ -8,8 +8,8 @@
 // Constructor
 class Box {
   constructor(x, y) {
-    this.w = random(25, 30);
-    this.h = random(25, 30);
+    this.w = random(10, 40);
+    this.h = random(10, 40);
 
     // this.boxColor = color(random(0, 360), random(10, 50), 100);
     this.boxColor = color(0);
