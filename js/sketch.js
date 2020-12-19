@@ -74,14 +74,8 @@ function draw() {
       boxes.splice(i, 1);
     }
   }
-
-  if (boxes.length > 200) {
-    bgColor = color(0, 40, 60);
-  } else if (boxes.length > 80) {
-    bgColor = color(40, 40, 60);
-  } else if (boxes.length > 0) {
-    bgColor = color(80, 40, 60);
-  }
+  
+  bgColor = color(360-(boxes.length%360), 40, 60);
 }
 
 function keyPressed() {
